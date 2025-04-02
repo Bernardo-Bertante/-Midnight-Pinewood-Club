@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class DatabaseSingleton {
 
     private static volatile DatabaseSingleton instance;
-    private List<Member> members;
+    private final List<Member> members;
 
     private DatabaseSingleton() {
         members = Collections.unmodifiableList(new ArrayList<>());
@@ -25,7 +25,7 @@ public class DatabaseSingleton {
                 }
             }
         }
-        return instance;
+        return tempInstance;
     }
 
     public List<Member> getMembers() {
