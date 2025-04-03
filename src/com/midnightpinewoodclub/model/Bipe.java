@@ -1,5 +1,7 @@
 package com.midnightpinewoodclub.model;
 
+import com.midnightpinewoodclub.util.Title;
+
 import java.util.Date;
 
 public class Bipe {

@@ -14,10 +14,6 @@ public abstract class Member {
         this.bipe = bipe;
     }
 
-    protected void addAge() {
-        this.age++;
-    }
-
     public String getName() {
         return name;
     }

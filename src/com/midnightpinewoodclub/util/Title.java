@@ -1,4 +1,4 @@
-package com.midnightpinewoodclub.model;
+package com.midnightpinewoodclub.util;
 
 public enum Title {
     SIGNAL_SEEKER,

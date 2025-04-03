@@ -1,27 +1,26 @@
-package com.midnightpinewoodclub.config;
+package com.midnightpinewoodclub.repository;
 
 import com.midnightpinewoodclub.model.Member;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
-public class DatabaseSingleton {
+public class MemberRepository implements IMemberRepository{
 
-    private static volatile DatabaseSingleton instance;
+    private static volatile MemberRepository instance;
     private final List<Member> members;
 
-    private DatabaseSingleton() {
-        members = Collections.unmodifiableList(new ArrayList<>());
+    private MemberRepository() {
+        members = new ArrayList<>();
     }
 
-    public static DatabaseSingleton getInstance() {
-        DatabaseSingleton tempInstance = instance;
+    public static MemberRepository getInstance() {
+        MemberRepository tempInstance = instance;
         if (tempInstance == null) {
-            synchronized (DatabaseSingleton.class) {
+            synchronized (MemberRepository.class) {
                 tempInstance = instance;
                 if (tempInstance == null) {
-                    instance = tempInstance = new DatabaseSingleton();
+                    instance = tempInstance = new MemberRepository();
                 }
             }
         }
