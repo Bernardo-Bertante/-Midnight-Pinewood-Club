@@ -2,40 +2,25 @@ package com.midnightpinewoodclub.repository;
 
 import com.midnightpinewoodclub.model.Member;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
 public class MemberRepository implements IMemberRepository{
+    private final List<Member> members = new ArrayList<>();
 
-    private static volatile MemberRepository instance;
-    private final List<Member> members;
-
-    private MemberRepository() {
-        members = new ArrayList<>();
-    }
-
-    public static MemberRepository getInstance() {
-        MemberRepository tempInstance = instance;
-        if (tempInstance == null) {
-            synchronized (MemberRepository.class) {
-                tempInstance = instance;
-                if (tempInstance == null) {
-                    instance = tempInstance = new MemberRepository();
-                }
-            }
-        }
-        return tempInstance;
-    }
-
+    @Override
     public List<Member> getMembers() {
-        return members;
+        return Collections.unmodifiableList(members);
     }
 
-    public void addMembers(Member member) {
-        members.add(member);
-    }
-
+    @Override
     public void removeMember(Member member) {
         members.remove(member);
+    }
+
+    @Override
+    public void addMember(Member member) {
+        members.add(member);
     }
 }

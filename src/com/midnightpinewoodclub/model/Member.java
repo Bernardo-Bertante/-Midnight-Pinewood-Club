@@ -1,13 +1,15 @@
 package com.midnightpinewoodclub.model;
 
-public abstract class Member {
+import com.midnightpinewoodclub.util.Gender;
+
+public class Member {
 
     private final String name;
     private int age;
-    private final String gender;
+    private final Gender gender;
     private final Bipe bipe;
 
-    public Member(String name, int age, String gender, Bipe bipe) {
+    public Member(String name, int age, Gender gender, Bipe bipe) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -22,7 +24,7 @@ public abstract class Member {
         return age;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 

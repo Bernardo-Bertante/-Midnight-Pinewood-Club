@@ -5,6 +5,7 @@ import com.midnightpinewoodclub.controller.MainController;
 import com.midnightpinewoodclub.controller.MemberController;
 import com.midnightpinewoodclub.repository.IMemberRepository;
 import com.midnightpinewoodclub.repository.MemberRepository;
+import com.midnightpinewoodclub.service.BipeService;
 import com.midnightpinewoodclub.service.IMemberService;
 import com.midnightpinewoodclub.service.MemberService;
 
@@ -14,15 +15,21 @@ public class AppFactory {
     public static final Scanner scanner = new Scanner(System.in);
 
     public static IMemberRepository createMemberRepository() {
-        return MemberRepository.getInstance();
+        return new MemberRepository();
     }
 
     public static IMemberService createMemberService() {
-        return new MemberService();
+        return new MemberService(createMemberRepository(), createBipeService());
     }
 
     public static MemberController createMemberController() {
-        return new MemberController(createMemberService(), scanner);
+        return new MemberController(createMemberService());
+    }
+
+    //
+
+    public static BipeService createBipeService() {
+        return new BipeService(createMemberRepository());
     }
 
     public static BipeController createBipeController() {
