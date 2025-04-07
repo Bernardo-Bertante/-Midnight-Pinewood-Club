@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class AgeRestrictionException extends Exception {
     private final int age;
+    private static String message;
     private static final List<String> MESSAGES = List.of(
             "Access Denied: You're too young for the Midnight Pinewood Club!",
             "Oops! Only seasoned souls may enter the Midnight Pinewood Club.",
@@ -21,22 +22,24 @@ public class AgeRestrictionException extends Exception {
     );
 
     public AgeRestrictionException(int age) {
+        super(getRandomMessage());
         this.age = age;
         loggerRegister();
     }
 
     private void loggerRegister() {
         Logger.getInstance().log(age +
-                " tried to join the Club but received the fallowing message: " + getRandomMessage());
+                " years old tried to join the Club but received the fallowing message: " + message);
     }
 
-    private String getRandomMessage() {
-        Random random = new Random(age);
-        return MESSAGES.get(random.nextInt(MESSAGES.size()));
+    private static String getRandomMessage() {
+        Random random = new Random();
+        message = MESSAGES.get(random.nextInt(MESSAGES.size()));
+        return message;
     }
 
     @Override
     public String toString() {
-        return getRandomMessage();
+        return message;
     }
 }

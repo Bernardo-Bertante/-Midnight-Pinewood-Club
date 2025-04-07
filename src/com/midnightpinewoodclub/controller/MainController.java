@@ -1,5 +1,7 @@
 package com.midnightpinewoodclub.controller;
 
+import com.midnightpinewoodclub.util.InputUtil;
+
 import java.nio.file.LinkPermission;
 import java.util.Scanner;
 
@@ -15,18 +17,17 @@ public class MainController {
     }
 
     public void startMenu() {
+        System.out.println("\nWelcome to the Club - good to see you here!\n");
         while (true) {
-            System.out.println("\nWelcome to the Club - good to see you here!\n");
             System.out.println("1. Join the Club");
             System.out.println("2. Your Bipe");
             System.out.println("0. See yah!");
-            System.out.println("\nWhat do you want to do?\n");
 
-            int response = input.nextInt();
+            int response = InputUtil.readInt("\nWhat do you want to do?");
 
             switch (response) {
                 case 1:
-                    System.out.println("Nice to hear that! Take this:");
+                    System.out.println("\nNice to hear that!");
                     memberController.registerMember();
                     break;
                 case 2:

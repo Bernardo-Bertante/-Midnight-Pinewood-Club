@@ -2,38 +2,26 @@ package com.midnightpinewoodclub.model;
 
 import com.midnightpinewoodclub.util.Title;
 
-import java.util.Date;
-
 public class Bipe {
 
-    private final String serialNumber;
-    private String codename;
+    private final int serialNumber;
     private Enum<Title> title;
-    private final Date issueDate;
+    private final String issueDate;
     private boolean onMission;
 
-    public Bipe(String serialNumber, String codename, Enum<Title> title, Date issueDate, boolean onMission) {
+    public Bipe(int serialNumber, Enum<Title> title, String issueDate, boolean onMission) {
         this.serialNumber = serialNumber;
-        this.codename = codename;
         this.title = title;
         this.issueDate = issueDate;
         this.onMission = onMission;
     }
 
-    public String getSerialNumber() {
+    public int getSerialNumber() {
         return serialNumber;
     }
 
-    public Date getIssueDate() {
+    public String getIssueDate() {
         return issueDate;
-    }
-
-    public String getCodename() {
-        return codename;
-    }
-
-    public void setCodename(String codename) {
-        this.codename = codename;
     }
 
     public Enum<Title> getTitle() {

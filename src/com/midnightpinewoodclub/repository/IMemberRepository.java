@@ -8,4 +8,5 @@ public interface IMemberRepository {
     List<Member> getMembers();
     void addMember(Member member);
     void removeMember(Member member);
+    boolean serialNumberCheck(int serialNumber);
 }

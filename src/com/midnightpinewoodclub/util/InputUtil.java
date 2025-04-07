@@ -1,5 +1,6 @@
 package com.midnightpinewoodclub.util;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class InputUtil {
@@ -11,9 +12,11 @@ public class InputUtil {
             try {
                 System.out.println(message);
                 value = scanner.nextInt();
+                scanner.nextLine();
                 return value;
-            } catch (NumberFormatException e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Invalid input! Please enter a valid number.");
+                scanner.nextLine();
             }
         }
     }
@@ -23,6 +26,7 @@ public class InputUtil {
         while (true) {
             System.out.println(message);
             value = scanner.nextLine().trim();
+            value = value.substring(0, 1).toUpperCase() + value.substring(1);
             if (!value.isEmpty()) {
                 return value;
             } else {

@@ -1,5 +1,7 @@
 package com.midnightpinewoodclub.controller;
 
+import com.midnightpinewoodclub.util.InputUtil;
+
 import java.util.Scanner;
 
 public class BipeController {
@@ -10,5 +12,10 @@ public class BipeController {
     }
 
     public void accessBipe() {
+        int serialCode = InputUtil.readInt();
+
+        while (true) {
+            System.out.println("");
+        }
     }
 }

@@ -23,4 +23,17 @@ public class MemberRepository implements IMemberRepository{
     public void addMember(Member member) {
         members.add(member);
     }
+
+    @Override
+    public boolean serialNumberCheck(int serialNumber) {
+        if (members.isEmpty()) {
+            return false;
+        }
+        boolean validation;
+        for (Member member : members) {
+            validation = member.getBipe().getSerialNumber() == serialNumber;
+            if (validation) {return true;}
+        }
+        return false;
+    }
 }
