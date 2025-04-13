@@ -31,7 +31,6 @@ public class MainController {
                     memberController.registerMember();
                     break;
                 case 2:
-                    System.out.println("starting..\n");
                     bipeController.accessBipe();
                     break;
                 case 0:

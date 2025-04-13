@@ -9,9 +9,9 @@ import com.midnightpinewoodclub.util.Logger;
 
 public class MemberService implements IMemberService{
     private final IMemberRepository memberRepository;
-    private final BipeService bipeService;
+    private final IBipeService bipeService;
 
-    public MemberService(IMemberRepository memberRepository, BipeService bipeService) {
+    public MemberService(IMemberRepository memberRepository, IBipeService bipeService) {
         this.memberRepository = memberRepository;
         this.bipeService = bipeService;
     }

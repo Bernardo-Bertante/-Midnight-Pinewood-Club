@@ -23,7 +23,7 @@ public class MemberController {
                 Gender gender = InputUtil.readEnum("Gender (MAN/WOMAN): ", Gender.class);
 
                 Member member = memberService.addMember(name, age, gender);
-                System.out.println("You are now part of the club! And your Bipe code is: " + member.getBipe().getSerialNumber());
+                System.out.println("You are now part of the club! And your Bipe code is: " + member.getBipe().getSerialNumber() + "\n");
 
 
             } catch (AgeRestrictionException e) {

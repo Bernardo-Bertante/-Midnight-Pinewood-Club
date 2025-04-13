@@ -1,5 +1,6 @@
 package com.midnightpinewoodclub.repository;
 
+import com.midnightpinewoodclub.model.Bipe;
 import com.midnightpinewoodclub.model.Member;
 
 import java.util.Collections;
@@ -35,5 +36,14 @@ public class MemberRepository implements IMemberRepository{
             if (validation) {return true;}
         }
         return false;
+    }
+
+    public Bipe getMemberBipe(int serialNumber) {
+        for (Member member: members) {
+            if (member.getBipe().getSerialNumber() == serialNumber) {
+                return member.getBipe();
+            }
+        }
+        return null;
     }
 }
