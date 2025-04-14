@@ -38,10 +38,10 @@ public class MemberRepository implements IMemberRepository{
         return false;
     }
 
-    public Bipe getMemberBipe(int serialNumber) {
+    public Member getMemberByBipeCode(int serialNumber) {
         for (Member member: members) {
             if (member.getBipe().getSerialNumber() == serialNumber) {
-                return member.getBipe();
+                return member;
             }
         }
         return null;

@@ -10,5 +10,5 @@ public interface IMemberRepository {
     void addMember(Member member);
     void removeMember(Member member);
     boolean serialNumberCheck(int serialNumber);
-    Bipe getMemberBipe(int serialNumber);
+    Member getMemberByBipeCode(int serialNumber);
 }

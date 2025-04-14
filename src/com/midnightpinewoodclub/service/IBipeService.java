@@ -1,9 +1,10 @@
 package com.midnightpinewoodclub.service;
 
 import com.midnightpinewoodclub.model.Bipe;
+import com.midnightpinewoodclub.model.Member;
 
 public interface IBipeService {
     Bipe createBipe();
-    Bipe getBipeByCode(int serialNumber);
-    String getBipeInfos(Bipe bipe);
+    Member getMemberByBipeCode(int serialNumber);
+    String getBipeInfos(Member member);
 }

@@ -1,12 +1,13 @@
 package com.midnightpinewoodclub.controller;
 
 import com.midnightpinewoodclub.model.Bipe;
+import com.midnightpinewoodclub.model.Member;
 import com.midnightpinewoodclub.service.IBipeService;
 import com.midnightpinewoodclub.util.InputUtil;
 
 public class BipeController {
     private final IBipeService bipeService;
-    private Bipe bipe;
+    private Member currentMember;
 
     public BipeController(IBipeService bipeService) {
         this.bipeService = bipeService;
@@ -15,8 +16,8 @@ public class BipeController {
     public void accessBipe() {
         int serialCode = InputUtil.readInt("Password (SerialNumber):");
         System.out.println("starting..\n");
-        this.bipe = bipeService.getBipeByCode(serialCode);
-        if (this.bipe == null) {
+        this.currentMember = bipeService.getMemberByBipeCode(serialCode);
+        if (this.currentMember == null) {
             System.out.println("Wrong Password!");
             return;
         }
@@ -29,7 +30,7 @@ public class BipeController {
             System.out.println("║   Your Midnight Pinewood Bipe    ║");
             System.out.println("╠══════════════════════════════════╣");
             System.out.println("║ [LCD]                            ║");
-            System.out.printf("║  > Welcome, %s.       ║\n", bipe.getTitle());
+            System.out.printf("║  > Welcome, %s.       ║\n", currentMember.getBipe().getTitle());
             System.out.println("║  > Your mission awaits...        ║");
             System.out.println("║                                  ║");
             System.out.println("║  Choose an option:               ║");
@@ -62,6 +63,6 @@ public class BipeController {
     }
 
     public void showBipeInfos() {
-        System.out.println(bipeService.getBipeInfos(bipe));
+        System.out.println(bipeService.getBipeInfos(currentMember));
     }
 }
