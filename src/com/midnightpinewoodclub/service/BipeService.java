@@ -30,18 +30,5 @@ public class BipeService implements IBipeService{
         return new Bipe(value, Title.values()[0], formattedDate, false);
     }
 
-    @Override
-    public Member getMemberByBipeCode(int serialCode) {
-        return memberRepository.getMemberByBipeCode(serialCode);
-    }
-
-    @Override
-    public String getBipeInfos(Member member) {
-        if (member == null) {
-            return "No Bipe found for the given serial number.";
-        }
-        return String.format("Name: %s, Age: %d\nBipe Serial: %d, Issue Date: %s, Title: %s\n",
-                member.getName(), member.getAge(), member.getBipe().getSerialNumber(), member.getBipe().getIssueDate(), member.getBipe().getTitle());
-    }
 
 }

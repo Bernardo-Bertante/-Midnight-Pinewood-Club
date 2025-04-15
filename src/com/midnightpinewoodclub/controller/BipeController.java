@@ -3,24 +3,28 @@ package com.midnightpinewoodclub.controller;
 import com.midnightpinewoodclub.model.Bipe;
 import com.midnightpinewoodclub.model.Member;
 import com.midnightpinewoodclub.service.IBipeService;
+import com.midnightpinewoodclub.service.IMemberService;
 import com.midnightpinewoodclub.util.InputUtil;
+import com.midnightpinewoodclub.util.MemberEditRequest;
 
 public class BipeController {
     private final IBipeService bipeService;
-    private Member currentMember;
+    private final IMemberService memberService;
+    private int serialCode;
 
-    public BipeController(IBipeService bipeService) {
+    public BipeController(IBipeService bipeService, IMemberService memberService) {
         this.bipeService = bipeService;
+        this.memberService = memberService;
     }
 
     public void accessBipe() {
         int serialCode = InputUtil.readInt("Password (SerialNumber):");
         System.out.println("starting..\n");
-        this.currentMember = bipeService.getMemberByBipeCode(serialCode);
-        if (this.currentMember == null) {
+        if (memberService.getMemberByBipeCode(serialCode) == null) {
             System.out.println("Wrong Password!");
             return;
         }
+        this.serialCode = serialCode;
         bipeMenu();
     }
 
@@ -30,7 +34,7 @@ public class BipeController {
             System.out.println("║   Your Midnight Pinewood Bipe    ║");
             System.out.println("╠══════════════════════════════════╣");
             System.out.println("║ [LCD]                            ║");
-            System.out.printf("║  > Welcome, %s.       ║\n", currentMember.getBipe().getTitle());
+            System.out.printf("║  > Welcome, %s        ║\n", memberService.getMemberByBipeCode(serialCode).getBipe().getTitle());
             System.out.println("║  > Your mission awaits...        ║");
             System.out.println("║                                  ║");
             System.out.println("║  Choose an option:               ║");
@@ -63,6 +67,30 @@ public class BipeController {
     }
 
     public void showBipeInfos() {
-        System.out.println(bipeService.getBipeInfos(currentMember));
+        while (true) {
+            System.out.println(memberService.getBipeInfos(serialCode));
+            System.out.println("[1] Edit Infos");
+            System.out.println("[0] <--");
+
+            int response = InputUtil.readInt("\nPress a button");
+
+            switch (response) {
+                case 1:
+                    String novoNome = InputUtil.readString("Novo nome: ");
+                    int novaIdade = InputUtil.readInt("Nova idade: ");
+                    if (novaIdade < memberService.getMemberByBipeCode(serialCode).getAge()) {
+                        throw new IllegalArgumentException("I don't think that how it works..New age cannot be lower than current age");
+                    }
+                    MemberEditRequest memberEditRequest = new MemberEditRequest(novoNome, novaIdade);
+                    memberService.changeMemberInfos(serialCode, memberEditRequest);
+                    System.out.println("Edit successfully made!");
+                    break;
+                case 0:
+                    return;
+                default:
+                    System.out.println("i should click on an button..");
+            }
+        }
+
     }
 }

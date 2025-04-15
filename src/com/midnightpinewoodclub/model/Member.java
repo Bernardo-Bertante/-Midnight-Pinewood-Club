@@ -4,7 +4,7 @@ import com.midnightpinewoodclub.util.Gender;
 
 public class Member {
 
-    private final String name;
+    private String name;
     private int age;
     private final Gender gender;
     private final Bipe bipe;
@@ -30,5 +30,13 @@ public class Member {
 
     public Bipe getBipe() {
         return bipe;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

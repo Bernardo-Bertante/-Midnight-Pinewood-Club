@@ -38,6 +38,7 @@ public class MemberRepository implements IMemberRepository{
         return false;
     }
 
+    @Override
     public Member getMemberByBipeCode(int serialNumber) {
         for (Member member: members) {
             if (member.getBipe().getSerialNumber() == serialNumber) {
@@ -46,4 +47,6 @@ public class MemberRepository implements IMemberRepository{
         }
         return null;
     }
+
+
 }

@@ -21,7 +21,7 @@ public class AppFactory {
     private static final IMemberService memberService = new MemberService(memberRepository, bipeService);
 
     private static final MemberController memberController = new MemberController(memberService);
-    private static final BipeController bipeController = new BipeController(bipeService);
+    private static final BipeController bipeController = new BipeController(bipeService, memberService);
 
     public static MemberController createMemberController() {
         return memberController;
