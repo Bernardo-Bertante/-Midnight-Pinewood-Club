@@ -2,11 +2,14 @@ package com.midnightpinewoodclub.service;
 
 import com.midnightpinewoodclub.exception.AgeRestrictionException;
 import com.midnightpinewoodclub.model.Bipe;
+import com.midnightpinewoodclub.model.Item;
 import com.midnightpinewoodclub.model.Member;
 import com.midnightpinewoodclub.repository.IMemberRepository;
 import com.midnightpinewoodclub.util.Gender;
 import com.midnightpinewoodclub.util.Logger;
 import com.midnightpinewoodclub.util.MemberEditRequest;
+
+import java.util.List;
 
 public class MemberService implements IMemberService{
     private final IMemberRepository memberRepository;
@@ -57,6 +60,18 @@ public class MemberService implements IMemberService{
         Member member = getMemberByBipeCode(serialCode);
         member.setName(newData.getName());
         member.setAge(newData.getAge());
+    }
+
+    @Override
+    public void addItem(int serialCode, Item item) {
+        Member member = getMemberByBipeCode(serialCode);
+        member.addItemToInventory(item);
+    }
+
+    @Override
+    public List<Item> getInventory(int serialCode) {
+        Member member = getMemberByBipeCode(serialCode);
+        return member.getInventoryItems();
     }
 
 }

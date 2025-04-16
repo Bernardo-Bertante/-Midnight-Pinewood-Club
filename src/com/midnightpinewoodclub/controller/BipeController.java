@@ -10,11 +10,13 @@ import com.midnightpinewoodclub.util.MemberEditRequest;
 public class BipeController {
     private final IBipeService bipeService;
     private final IMemberService memberService;
+    private final IInventoryController inventoryController;
     private int serialCode;
 
-    public BipeController(IBipeService bipeService, IMemberService memberService) {
+    public BipeController(IBipeService bipeService, IMemberService memberService, IInventoryController inventoryController) {
         this.bipeService = bipeService;
         this.memberService = memberService;
+        this.inventoryController = inventoryController;
     }
 
     public void accessBipe() {
@@ -52,7 +54,7 @@ public class BipeController {
                     showBipeInfos();
                     break;
                 case 2:
-                    //bipeController.accessBipe();
+                    inventoryController.openInventory(serialCode);
                     break;
                 case 3:
                     //bipeController.accessBipe();
