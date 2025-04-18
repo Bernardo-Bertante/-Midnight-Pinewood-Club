@@ -1,5 +1,6 @@
 package com.midnightpinewoodclub.model;
 
+import com.midnightpinewoodclub.model.missions.Mission;
 import com.midnightpinewoodclub.util.Title;
 
 public class Bipe {
@@ -8,12 +9,16 @@ public class Bipe {
     private Enum<Title> title;
     private final String issueDate;
     private boolean onMission;
+    private Mission mission;
+    private short currentMissionId;
 
-    public Bipe(int serialNumber, Enum<Title> title, String issueDate, boolean onMission) {
+    public Bipe(int serialNumber, Enum<Title> title, String issueDate) {
         this.serialNumber = serialNumber;
         this.title = title;
         this.issueDate = issueDate;
-        this.onMission = onMission;
+        this.onMission = false;
+        this.mission = null;
+        this.currentMissionId = 1;
     }
 
     public int getSerialNumber() {

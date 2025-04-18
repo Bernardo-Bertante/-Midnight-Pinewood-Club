@@ -11,12 +11,14 @@ public class BipeController {
     private final IBipeService bipeService;
     private final IMemberService memberService;
     private final IInventoryController inventoryController;
+    private IMissionController missionController;
     private int serialCode;
 
-    public BipeController(IBipeService bipeService, IMemberService memberService, IInventoryController inventoryController) {
+    public BipeController(IBipeService bipeService, IMemberService memberService, IInventoryController inventoryController, IMissionController missionController) {
         this.bipeService = bipeService;
         this.memberService = memberService;
         this.inventoryController = inventoryController;
+        this.missionController = missionController;
     }
 
     public void accessBipe() {
@@ -54,10 +56,10 @@ public class BipeController {
                     showBipeInfos();
                     break;
                 case 2:
-                    inventoryController.openInventory(serialCode);
+                    missionController.accessMission(memberService.getInMissionStatus(serialCode));
                     break;
                 case 3:
-                    //bipeController.accessBipe();
+                    inventoryController.openInventory(serialCode);
                     break;
                 case 0:
                     System.out.println("turning off..\n");

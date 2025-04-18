@@ -12,6 +12,9 @@ public interface IMemberService {
     Member addMember(String name, int age, Gender gender) throws AgeRestrictionException;
     Member getMemberByBipeCode(int serialNumber);
     String getBipeInfos(int serialCode);
+
+    boolean getInMissionStatus(int serialCode);
+
     void changeMemberInfos(int serialCode, MemberEditRequest data);
     void addItem(int serialCode, Item item);
     List<Item> getInventory(int serialCode);

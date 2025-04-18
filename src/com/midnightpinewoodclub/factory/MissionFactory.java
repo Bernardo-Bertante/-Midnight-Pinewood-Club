@@ -7,15 +7,16 @@ import com.midnightpinewoodclub.model.missions.HalloweenMission;
 import com.midnightpinewoodclub.model.missions.EasterMission;
 import com.midnightpinewoodclub.model.missions.SaintJohnMission;
 import com.midnightpinewoodclub.model.missions.MainMission;
+import com.midnightpinewoodclub.util.MissionType;
 
 public class MissionFactory {
-    public static Mission createMission(String type, int id, String title, String description, Item reward) {
-        return switch (type.toUpperCase()) {
-            case "CHRISTMAS" -> new ChristmasMission(id, title, description, reward);
-            case "HALLOWEEN" -> new HalloweenMission(id, title, description, reward);
-            case "EASTER" -> new EasterMission(id, title, description, reward);
-            case "SAINTJOHN" -> new SaintJohnMission(id, title, description, reward);
-            case "MAINSTORY" -> new MainMission(id, title, description, reward);
+    public static Mission createMission(MissionType type, int id, String title, String description, Item reward) {
+        return switch (type) {
+            case CHRISTMAS -> new ChristmasMission(id, title, description, reward);
+            case HALLOWEEN -> new HalloweenMission(id, title, description, reward);
+            case EASTER -> new EasterMission(id, title, description, reward);
+            case SAINTJOHN -> new SaintJohnMission(id, title, description, reward);
+            case MAINSTORY -> new MainMission(id, title, description, reward);
             default -> throw new IllegalArgumentException("Unknown mission type");
         };
     }

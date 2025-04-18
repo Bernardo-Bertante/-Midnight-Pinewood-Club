@@ -1,9 +1,9 @@
 package com.midnightpinewoodclub.util;
 
-public enum Type {
+public enum MissionType {
     CHRISTMAS,
     EASTER,
     HALLOWEEN,
-    SAINT_JOHN,
-    MAIN_STORY;
+    SAINTJOHN,
+    MAINSTORY;
 }

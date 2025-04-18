@@ -27,7 +27,7 @@ public class BipeService implements IBipeService{
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDate = dateFormat.format(new Date());
 
-        return new Bipe(value, Title.values()[0], formattedDate, false);
+        return new Bipe(value, Title.values()[0], formattedDate);
     }
 
 

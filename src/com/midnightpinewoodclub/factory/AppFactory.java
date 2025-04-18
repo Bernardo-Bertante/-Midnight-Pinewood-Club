@@ -15,10 +15,12 @@ public class AppFactory {
     private static final IBipeService bipeService = new BipeService(memberRepository);
     private static final IMemberService memberService = new MemberService(memberRepository, bipeService);
 
+    private static final IMissionService missionService = new MissionService(memberService, null); //null?
+    private static final IMissionController missionController = new MissionController(missionService);
     private static final IInventoryService inventoryService = new InventoryService(memberService);
     private static final IInventoryController inventoryController = new InventoryController(inventoryService);
     private static final MemberController memberController = new MemberController(memberService);
-    private static final BipeController bipeController = new BipeController(bipeService, memberService, inventoryController);
+    private static final BipeController bipeController = new BipeController(bipeService, memberService, inventoryController, missionController);
 
     public static MemberController createMemberController() {
         return memberController;

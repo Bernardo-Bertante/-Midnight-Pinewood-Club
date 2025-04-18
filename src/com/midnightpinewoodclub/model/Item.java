@@ -1,14 +1,14 @@
 package com.midnightpinewoodclub.model;
 
-import com.midnightpinewoodclub.util.Type;
+import com.midnightpinewoodclub.util.MissionType;
 
 public class Item {
     private final String name;
-    private final Type type;
+    private final MissionType type;
     private final String description;
     private final int id;
 
-    public Item(String name, Type type, String description, int id) {
+    public Item(String name, MissionType type, String description, int id) {
         this.name = name;
         this.type = type;
         this.description = description;
@@ -19,7 +19,7 @@ public class Item {
         return name;
     }
 
-    public Type getType() {
+    public MissionType getType() {
         return type;
     }
 
