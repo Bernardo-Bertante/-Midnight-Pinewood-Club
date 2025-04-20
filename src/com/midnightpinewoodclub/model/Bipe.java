@@ -10,7 +10,7 @@ public class Bipe {
     private final String issueDate;
     private boolean onMission;
     private Mission mission;
-    private short currentMissionId;
+    private int currentMissionId;
 
     public Bipe(int serialNumber, Enum<Title> title, String issueDate) {
         this.serialNumber = serialNumber;
@@ -18,7 +18,7 @@ public class Bipe {
         this.issueDate = issueDate;
         this.onMission = false;
         this.mission = null;
-        this.currentMissionId = 1;
+        this.currentMissionId = 0;
     }
 
     public int getSerialNumber() {
@@ -41,8 +41,16 @@ public class Bipe {
         return onMission;
     }
 
+    public int getCurrentMissionId() {
+        return currentMissionId;
+    }
+
     public void setOnMission(boolean onMission) {
         this.onMission = onMission;
     }
 
+    public void setCurrentMission(Mission mission) {
+        this.mission = mission;
+        this.currentMissionId = mission.getId();
+    }
 }

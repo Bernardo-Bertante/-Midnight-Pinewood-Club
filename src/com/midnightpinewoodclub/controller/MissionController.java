@@ -11,11 +11,17 @@ public class MissionController implements IMissionController{
     }
 
     @Override
-    public void accessMission(boolean missionStatus) {
+    public void accessMission(boolean missionStatus, int serialCode) {
         while (true) {
-            System.out.println(missionService.showCurrentOption(missionStatus));
+            System.out.println(missionService.showCurrentOption(missionStatus, serialCode));
 
             int response = InputUtil.readInt("\nWhat do you want to do?");
+
+            if (missionStatus) {
+
+            } else {
+                missionService.startMission(serialCode, response - 1);
+            }
 
             switch (response) {
                 case 1:

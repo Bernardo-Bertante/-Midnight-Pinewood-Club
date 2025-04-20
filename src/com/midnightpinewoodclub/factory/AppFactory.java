@@ -2,7 +2,9 @@ package com.midnightpinewoodclub.factory;
 
 import com.midnightpinewoodclub.controller.*;
 import com.midnightpinewoodclub.repository.IMemberRepository;
+import com.midnightpinewoodclub.repository.IMissionRepository;
 import com.midnightpinewoodclub.repository.MemberRepository;
+import com.midnightpinewoodclub.repository.MissionRepository;
 import com.midnightpinewoodclub.service.*;
 
 import java.util.Scanner;
@@ -14,8 +16,8 @@ public class AppFactory {
     private static final IMemberRepository memberRepository = new MemberRepository();
     private static final IBipeService bipeService = new BipeService(memberRepository);
     private static final IMemberService memberService = new MemberService(memberRepository, bipeService);
-
-    private static final IMissionService missionService = new MissionService(memberService, null); //null?
+    private static final IMissionRepository missionRepository = new MissionRepository();
+    private static final IMissionService missionService = new MissionService(memberService, missionRepository);
     private static final IMissionController missionController = new MissionController(missionService);
     private static final IInventoryService inventoryService = new InventoryService(memberService);
     private static final IInventoryController inventoryController = new InventoryController(inventoryService);

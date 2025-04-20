@@ -56,7 +56,7 @@ public class BipeController {
                     showBipeInfos();
                     break;
                 case 2:
-                    missionController.accessMission(memberService.getInMissionStatus(serialCode));
+                    missionController.accessMission(memberService.getInMissionStatus(serialCode), serialCode);
                     break;
                 case 3:
                     inventoryController.openInventory(serialCode);

@@ -3,6 +3,7 @@ package com.midnightpinewoodclub.service;
 import com.midnightpinewoodclub.exception.AgeRestrictionException;
 import com.midnightpinewoodclub.model.Item;
 import com.midnightpinewoodclub.model.Member;
+import com.midnightpinewoodclub.model.missions.Mission;
 import com.midnightpinewoodclub.util.Gender;
 import com.midnightpinewoodclub.util.MemberEditRequest;
 
@@ -18,4 +19,5 @@ public interface IMemberService {
     void changeMemberInfos(int serialCode, MemberEditRequest data);
     void addItem(int serialCode, Item item);
     List<Item> getInventory(int serialCode);
+    String setMission(int serialCode, Mission mission);
 }

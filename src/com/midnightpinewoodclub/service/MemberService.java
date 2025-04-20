@@ -4,6 +4,7 @@ import com.midnightpinewoodclub.exception.AgeRestrictionException;
 import com.midnightpinewoodclub.model.Bipe;
 import com.midnightpinewoodclub.model.Item;
 import com.midnightpinewoodclub.model.Member;
+import com.midnightpinewoodclub.model.missions.Mission;
 import com.midnightpinewoodclub.repository.IMemberRepository;
 import com.midnightpinewoodclub.util.Gender;
 import com.midnightpinewoodclub.util.Logger;
@@ -78,6 +79,14 @@ public class MemberService implements IMemberService{
     public List<Item> getInventory(int serialCode) {
         Member member = getMemberByBipeCode(serialCode);
         return member.getInventoryItems();
+    }
+
+    @Override
+    public String setMission(int serialCode, Mission mission) {
+        Member member = getMemberByBipeCode(serialCode);
+        member.getBipe().setCurrentMission(mission);
+        member.getBipe().setOnMission(true);
+        return "Mission started: " + mission.getTitle();
     }
 
 }

@@ -10,6 +10,7 @@ import com.midnightpinewoodclub.model.missions.MainMission;
 import com.midnightpinewoodclub.util.MissionType;
 
 public class MissionFactory {
+
     public static Mission createMission(MissionType type, int id, String title, String description, Item reward) {
         return switch (type) {
             case CHRISTMAS -> new ChristmasMission(id, title, description, reward);
