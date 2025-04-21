@@ -10,6 +10,11 @@ public class MissionRepository implements IMissionRepository{
     private final List<Mission> missions = new ArrayList<>();
 
     @Override
+    public int getMissionsSize() {
+        return missions.size();
+    }
+
+    @Override
     public List<Mission> getMissions() {
         return Collections.unmodifiableList(missions);
     }

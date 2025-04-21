@@ -21,6 +21,26 @@ public class InputUtil {
         }
     }
 
+    public static int readIntInRange(String message, int min, int max) {
+        int value;
+        while (true) {
+            try {
+                System.out.println(message);
+                value = scanner.nextInt();
+                scanner.nextLine();
+                if (value < min || value > max) {
+                    System.out.printf("Please enter a number between %d and %d.%n", min, max);
+                    continue;
+                }
+                return value;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter a valid number.");
+                scanner.nextLine();
+            }
+        }
+    }
+
+
     public static String readString(String message) {
         String value;
         while (true) {

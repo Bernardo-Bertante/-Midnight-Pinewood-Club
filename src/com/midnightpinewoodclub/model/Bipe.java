@@ -45,6 +45,8 @@ public class Bipe {
         return currentMissionId;
     }
 
+    public Mission getMission() {return mission;}
+
     public void setOnMission(boolean onMission) {
         this.onMission = onMission;
     }
@@ -53,4 +55,5 @@ public class Bipe {
         this.mission = mission;
         this.currentMissionId = mission.getId();
     }
+
 }

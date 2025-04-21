@@ -89,4 +89,10 @@ public class MemberService implements IMemberService{
         return "Mission started: " + mission.getTitle();
     }
 
+    @Override
+    public Mission getCurrentMission(int serialCode) {
+        Member member = getMemberByBipeCode(serialCode);
+        return member.getBipe().getMission();
+    }
+
 }

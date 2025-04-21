@@ -20,4 +20,6 @@ public interface IMemberService {
     void addItem(int serialCode, Item item);
     List<Item> getInventory(int serialCode);
     String setMission(int serialCode, Mission mission);
+
+    Mission getCurrentMission(int serialCode);
 }

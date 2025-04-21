@@ -1,5 +1,6 @@
 package com.midnightpinewoodclub.service;
 
+import com.midnightpinewoodclub.model.Item;
 import com.midnightpinewoodclub.model.Member;
 import com.midnightpinewoodclub.model.missions.Mission;
 import com.midnightpinewoodclub.repository.IMissionRepository;
@@ -13,6 +14,11 @@ public class MissionService implements IMissionService{
     public MissionService(IMemberService memberService, IMissionRepository missionRepository) {
         this.memberService = memberService;
         this.missionRepository = missionRepository;
+    }
+
+    @Override
+    public int getMissionsQuantity() {
+        return missionRepository.getMissionsSize();
     }
 
     @Override
@@ -30,7 +36,7 @@ public class MissionService implements IMissionService{
         if (missions.isEmpty()) {
             sb.append("║   (No items in inventory yet...)     ║\n");
         } else {
-            int cont = 0;
+            int cont = 1;
             for (Mission mission : missions) {
                 sb.append("╔══════════════════════════════════════╗\n");
                 sb.append(String.format("║                %s [%d]                    ║\n", mission.getTitle(), cont));
@@ -72,14 +78,29 @@ public class MissionService implements IMissionService{
 
     //mission id começa nulo(0) -> ao escolher qual missao quer fazer pelas opcoes disponiveis -> seta o id daquela missao no bipe do membro e seta a missao e true in mission
 
+    @Override
     public Mission getMissionById(int missionId) {
         return missionRepository.getMission(missionId);
     }
 
     @Override
-    public String startMission(int serialCode, int missionIndex) {
+    public String joinMission(int serialCode, int missionIndex) {
         Mission mission = missionRepository.getMissionByIndex(missionIndex);
         return memberService.setMission(serialCode, mission);
+    }
+
+    @Override
+    public String startMissionStory(int serialCode) {
+        Mission mission = memberService.getCurrentMission(serialCode);
+        return mission.beginStory().tellStory();
+    }
+
+    @Override
+    public String finishMission(int serialCode) {
+        Mission mission = memberService.getCurrentMission(serialCode);
+        Item reward = mission.getReward();
+        memberService.addItem(serialCode, reward);
+        return "\nYou received " + reward.getName();
     }
 
 }

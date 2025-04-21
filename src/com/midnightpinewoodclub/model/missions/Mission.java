@@ -32,7 +32,7 @@ public abstract class Mission {
         return id;
     }
 
-    public Story beginMission(){
+    public Story beginStory(){
         Story story = createStory();
         story.tellStory();
         return story;

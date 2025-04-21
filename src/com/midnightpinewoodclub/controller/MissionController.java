@@ -14,30 +14,30 @@ public class MissionController implements IMissionController{
     public void accessMission(boolean missionStatus, int serialCode) {
         while (true) {
             System.out.println(missionService.showCurrentOption(missionStatus, serialCode));
-
-            int response = InputUtil.readInt("\nWhat do you want to do?");
+            int response;
 
             if (missionStatus) {
+                System.out.println("\n[1] Joy the Story");
+                System.out.println("[0] <--");
+                response = InputUtil.readInt("\nWhat do you want to do?");
+                switch (response) {
+                    case 1:
+                        missionService.startMissionStory(serialCode);
+                        missionService.finishMission(serialCode);
+                        break;
+                    case 0:
+                        return;
+                    default:
+                        System.out.println("i should click in the buttons..");
+                }
 
             } else {
-                missionService.startMission(serialCode, response - 1);
+                response = InputUtil.readIntInRange("\nChoose a mission: ", 1, missionService.getMissionsQuantity());
+                System.out.println(missionService.joinMission(serialCode, response - 1));
+                accessMission(true, serialCode);
             }
 
-            switch (response) {
-                case 1:
-                    //showBipeInfos();
-                    break;
-                case 2:
-                    //missionController.accessMission();
-                    break;
-                case 3:
-                    //inventoryController.openInventory(serialCode);
-                    break;
-                case 0:
-                    return;
-                default:
-                    System.out.println("i should click in the buttons..");
-            }
+
         }
     }
 
