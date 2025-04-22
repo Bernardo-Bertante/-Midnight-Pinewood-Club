@@ -15,6 +15,4 @@ public class SaintJohnStory implements Story {
             default -> "A festa de São João relembra o profeta que preparou os corações para receber o Salvador. Uma fogueira acesa não para festa, mas como farol de esperança.";
         };
     }
-
-    private
 }
