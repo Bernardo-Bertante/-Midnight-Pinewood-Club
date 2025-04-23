@@ -1,4 +1,4 @@
-package com.midnightpinewoodclub.util;
+package com.midnightpinewoodclub.dto;
 
 public class MemberEditRequest {
     private String name;

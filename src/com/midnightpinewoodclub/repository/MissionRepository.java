@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class MissionRepository implements IMissionRepository{
-    private final List<Mission> missions = new ArrayList<>();
+    private List<Mission> missions = new ArrayList<>();
 
     @Override
     public int getMissionsSize() {
@@ -32,6 +32,11 @@ public class MissionRepository implements IMissionRepository{
     @Override
     public Mission getMissionByIndex(int missionIndex) {
         return missions.get(missionIndex);
+    }
+
+    @Override
+    public void setMissions(List<Mission> missions) {
+        this.missions = missions;
     }
 
     @Override

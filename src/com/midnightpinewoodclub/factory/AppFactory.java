@@ -36,6 +36,8 @@ public class AppFactory {
         return inventoryController;
     }
 
+    public static IMissionRepository createMissionRepository() { return missionRepository; }
+
     public static MainController createMainController() {
         return new MainController(memberController, bipeController, scanner);
     }

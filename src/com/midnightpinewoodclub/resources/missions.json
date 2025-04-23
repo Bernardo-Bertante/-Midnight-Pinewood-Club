@@ -1,0 +1,57 @@
+[
+  {
+    "id": 20254,
+    "title": "Natal em Família",
+    "description": "Ajude a montar o presépio e espalhar o espírito natalino.",
+    "type": "CHRISTMAS",
+    "reward": {
+      "name": "Estrela de Belém",
+      "description": "Uma estrela dourada que brilha com esperança.",
+      "type": "CHRISTMAS"
+    }
+  },
+  {
+    "id": 20251,
+    "title": "Páscoa de Esperança",
+    "description": "Espalhe mensagens de fé pela comunidade.",
+    "type": "EASTER",
+    "reward": {
+      "name": "Ovo Sagrado",
+      "description": "Um ovo de chocolate com bênçãos escondidas.",
+      "type": "EASTER"
+    }
+  },
+  {
+    "id": 20252,
+    "title": "Festa de São João",
+    "description": "Participe da celebração com danças e alegria.",
+    "type": "SAINTJOHN",
+    "reward": {
+      "name": "Chapéu de Palha Abençoado",
+      "description": "Traz proteção contra maus espíritos.",
+      "type": "SAINTJOHN"
+    }
+  },
+  {
+    "id": 20253,
+    "title": "Noite das Almas",
+    "description": "Ilumine os caminhos na véspera do Dia de Todos os Santos.",
+    "type": "HALLOWEEN",
+    "reward": {
+      "name": "Lanterna da Luz Divina",
+      "description": "Afasta a escuridão com luz sagrada.",
+      "type": "HALLOWEEN"
+    }
+  },
+  {
+    "id": 1,
+    "title": "O Começo da Jornada",
+    "description": "Descubra seu propósito na vila de Pinewood.",
+    "type": "MAINSTORY",
+    "reward": {
+      "name": "Medalhão da Fé",
+      "description": "Marca o início da sua missão maior.",
+      "type": "MAINSTORY"
+    }
+  }
+]

@@ -8,7 +8,7 @@ import com.midnightpinewoodclub.model.missions.Mission;
 import com.midnightpinewoodclub.repository.IMemberRepository;
 import com.midnightpinewoodclub.util.Gender;
 import com.midnightpinewoodclub.util.Logger;
-import com.midnightpinewoodclub.util.MemberEditRequest;
+import com.midnightpinewoodclub.dto.MemberEditRequest;
 
 import java.util.List;
 

@@ -13,6 +13,8 @@ public interface IMissionRepository {
 
     Mission getMissionByIndex(int missionIndex);
 
+    void setMissions(List<Mission> missions);
+
     void removeMission(Mission mission);
 
     void addMission(Mission mission);

@@ -6,13 +6,12 @@ public class Item {
     private final String name;
     private final MissionType type;
     private final String description;
-    private final int id;
 
-    public Item(String name, MissionType type, String description, int id) {
+
+    public Item(String name, MissionType type, String description) {
         this.name = name;
         this.type = type;
         this.description = description;
-        this.id = id;
     }
 
     public String getName() {
@@ -27,7 +26,4 @@ public class Item {
         return description;
     }
 
-    public int getId() {
-        return id;
-    }
 }

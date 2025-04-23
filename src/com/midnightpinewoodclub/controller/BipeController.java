@@ -1,11 +1,9 @@
 package com.midnightpinewoodclub.controller;
 
-import com.midnightpinewoodclub.model.Bipe;
-import com.midnightpinewoodclub.model.Member;
 import com.midnightpinewoodclub.service.IBipeService;
 import com.midnightpinewoodclub.service.IMemberService;
 import com.midnightpinewoodclub.util.InputUtil;
-import com.midnightpinewoodclub.util.MemberEditRequest;
+import com.midnightpinewoodclub.dto.MemberEditRequest;
 
 public class BipeController {
     private final IBipeService bipeService;
