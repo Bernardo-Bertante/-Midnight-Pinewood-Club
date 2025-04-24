@@ -74,10 +74,6 @@ public class MissionService implements IMissionService{
         return sb.toString();
     }
 
-    //setmissionId
-
-    //mission id começa nulo(0) -> ao escolher qual missao quer fazer pelas opcoes disponiveis -> seta o id daquela missao no bipe do membro e seta a missao e true in mission
-
     @Override
     public Mission getMissionById(int missionId) {
         return missionRepository.getMission(missionId);

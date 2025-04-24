@@ -27,7 +27,7 @@ public class MemberController {
 
 
             } catch (AgeRestrictionException e) {
-                System.out.println("\n" + e.getMessage() + " See you around kid!");
+                System.out.println("\n" + e.getMessage() + " See you around kid!\n");
             } catch (Exception e) {
                 System.out.println("Unexpected error: " + e.getMessage());
 

@@ -23,7 +23,7 @@ public class BipeController {
         int serialCode = InputUtil.readInt("Password (SerialNumber):");
         System.out.println("starting..\n");
         if (memberService.getMemberByBipeCode(serialCode) == null) {
-            System.out.println("Wrong Password!");
+            System.out.println("Wrong Password!\n");
             return;
         }
         this.serialCode = serialCode;
@@ -78,8 +78,8 @@ public class BipeController {
 
             switch (response) {
                 case 1:
-                    String novoNome = InputUtil.readString("Novo nome: ");
-                    int novaIdade = InputUtil.readInt("Nova idade: ");
+                    String novoNome = InputUtil.readString("New name: ");
+                    int novaIdade = InputUtil.readInt("New age: ");
                     if (novaIdade < memberService.getMemberByBipeCode(serialCode).getAge()) {
                         throw new IllegalArgumentException("I don't think that how it works..New age cannot be lower than current age");
                     }

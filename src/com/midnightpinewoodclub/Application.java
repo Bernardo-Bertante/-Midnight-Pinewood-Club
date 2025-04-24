@@ -9,7 +9,7 @@ public class Application {
     public static void main(String[] args) {
         MainController mainController = AppFactory.createMainController();
         IMissionRepository missionRepository = AppFactory.createMissionRepository();
-        missionRepository.setMissions(MissionLoader.loadMissions("/resources/mission.json"));
+        missionRepository.setMissions(MissionLoader.loadMissions("src/com/midnightpinewoodclub/resources/missions.json"));
         mainController.startMenu();
         AppFactory.closeScanner();
     }

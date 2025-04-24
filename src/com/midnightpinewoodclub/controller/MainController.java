@@ -38,7 +38,7 @@ public class MainController {
                     input.close();
                     return;
                 default:
-                    System.out.println("i don't know what you're talking about..");
+                    System.out.println("i don't know what you're talking about..\n");
             }
         }
     }

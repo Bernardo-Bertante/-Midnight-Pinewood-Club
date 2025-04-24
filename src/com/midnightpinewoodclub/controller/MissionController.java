@@ -12,12 +12,14 @@ public class MissionController implements IMissionController{
 
     @Override
     public void accessMission(boolean missionStatus, int serialCode) {
-        while (true) {
+        boolean active = true;
+
+        while (active) {
             System.out.println(missionService.showCurrentOption(missionStatus, serialCode));
             int response;
 
             if (missionStatus) {
-                System.out.println("\n[1] Joy the Story");
+                System.out.println("\n[1] Join the Story");
                 System.out.println("[0] <--");
                 response = InputUtil.readInt("\nWhat do you want to do?");
                 switch (response) {
@@ -26,7 +28,8 @@ public class MissionController implements IMissionController{
                         missionService.finishMission(serialCode);
                         break;
                     case 0:
-                        return;
+                        active = false; // encerra o loop
+                        break;
                     default:
                         System.out.println("i should click in the buttons..");
                 }
@@ -34,11 +37,10 @@ public class MissionController implements IMissionController{
             } else {
                 response = InputUtil.readIntInRange("\nChoose a mission: ", 1, missionService.getMissionsQuantity());
                 System.out.println(missionService.joinMission(serialCode, response - 1));
-                accessMission(true, serialCode);
+                missionStatus = true;
             }
-
-
         }
     }
+
 
 }
