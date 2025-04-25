@@ -63,6 +63,12 @@ public class MemberService implements IMemberService{
     }
 
     @Override
+    public void setToNotInMission(int serialCode) {
+        Member member = getMemberByBipeCode(serialCode);
+        member.getBipe().setOnMission(false);
+    }
+
+    @Override
     public void changeMemberInfos(int serialCode, MemberEditRequest newData) {
         Member member = getMemberByBipeCode(serialCode);
         member.setName(newData.getName());

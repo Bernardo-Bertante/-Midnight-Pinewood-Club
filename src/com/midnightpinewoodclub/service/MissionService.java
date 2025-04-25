@@ -3,6 +3,7 @@ package com.midnightpinewoodclub.service;
 import com.midnightpinewoodclub.model.Item;
 import com.midnightpinewoodclub.model.Member;
 import com.midnightpinewoodclub.model.missions.Mission;
+import com.midnightpinewoodclub.model.stories.Story;
 import com.midnightpinewoodclub.repository.IMissionRepository;
 
 import java.util.List;
@@ -88,7 +89,8 @@ public class MissionService implements IMissionService{
     @Override
     public String startMissionStory(int serialCode) {
         Mission mission = memberService.getCurrentMission(serialCode);
-        return mission.beginStory().tellStory();
+        Story story = mission.beginStory();
+        return story.tellStory();
     }
 
     @Override
@@ -96,6 +98,7 @@ public class MissionService implements IMissionService{
         Mission mission = memberService.getCurrentMission(serialCode);
         Item reward = mission.getReward();
         memberService.addItem(serialCode, reward);
+        memberService.setToNotInMission(serialCode);
         return "\nYou received " + reward.getName();
     }
 

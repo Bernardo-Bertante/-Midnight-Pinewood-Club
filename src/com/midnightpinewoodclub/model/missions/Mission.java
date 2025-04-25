@@ -34,7 +34,6 @@ public abstract class Mission {
 
     public Story beginStory(){
         Story story = createStory();
-        story.tellStory();
         return story;
     }
 

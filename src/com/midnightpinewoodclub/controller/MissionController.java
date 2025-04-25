@@ -24,11 +24,12 @@ public class MissionController implements IMissionController{
                 response = InputUtil.readInt("\nWhat do you want to do?");
                 switch (response) {
                     case 1:
-                        missionService.startMissionStory(serialCode);
-                        missionService.finishMission(serialCode);
+                        System.out.println(missionService.startMissionStory(serialCode));
+                        System.out.println(missionService.finishMission(serialCode));
+                        active = false;
                         break;
                     case 0:
-                        active = false; // encerra o loop
+                        active = false;
                         break;
                     default:
                         System.out.println("i should click in the buttons..");

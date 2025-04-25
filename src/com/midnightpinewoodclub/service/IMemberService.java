@@ -16,6 +16,8 @@ public interface IMemberService {
 
     boolean getInMissionStatus(int serialCode);
 
+    void setToNotInMission(int serialCode);
+
     void changeMemberInfos(int serialCode, MemberEditRequest data);
     void addItem(int serialCode, Item item);
     List<Item> getInventory(int serialCode);

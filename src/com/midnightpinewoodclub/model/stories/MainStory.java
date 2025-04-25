@@ -1,7 +1,5 @@
 package com.midnightpinewoodclub.model.stories;
 
-import com.midnightpinewoodclub.model.missions.MainMission;
-
 public class MainStory implements Story {
     private final int missionNumber;
 
