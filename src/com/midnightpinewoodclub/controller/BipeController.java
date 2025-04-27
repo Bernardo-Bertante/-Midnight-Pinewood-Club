@@ -36,7 +36,7 @@ public class BipeController {
             System.out.println("║   Your Midnight Pinewood Bipe    ║");
             System.out.println("╠══════════════════════════════════╣");
             System.out.println("║ [LCD]                            ║");
-            System.out.printf("║  > Welcome, %s        ║\n", memberService.getMemberByBipeCode(serialCode).getBipe().getTitle());
+            System.out.printf("║  > Welcome,%-22s║\n", memberService.getMemberByBipeCode(serialCode).getBipe().getTitle().name());
             System.out.println("║  > Your mission awaits...        ║");
             System.out.println("║                                  ║");
             System.out.println("║  Choose an option:               ║");

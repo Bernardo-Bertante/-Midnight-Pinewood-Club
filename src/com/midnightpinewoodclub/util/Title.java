@@ -18,4 +18,18 @@ public enum Title {
     public int getValue() {
         return this.value;
     }
+
+    public static int fromTitle(Enum<Title> currentTitle) {
+        for (Title title : Title.values()) {
+            if (title.equals(currentTitle)) {
+                return title.getValue();
+            }
+        }
+        throw new IllegalArgumentException("Unknown Title: " + currentTitle);
+    }
+
+    public static int titleSize() {
+        return Title.values().length;
+    }
+
 }

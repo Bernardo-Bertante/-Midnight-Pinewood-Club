@@ -19,8 +19,11 @@ public interface IMemberService {
     void setToNotInMission(int serialCode);
 
     void changeMemberInfos(int serialCode, MemberEditRequest data);
-    void addItem(int serialCode, Item item);
+    boolean addItem(int serialCode, Item item);
     List<Item> getInventory(int serialCode);
+
+    void levelUp(int serialCode);
+
     String setMission(int serialCode, Mission mission);
 
     Mission getCurrentMission(int serialCode);

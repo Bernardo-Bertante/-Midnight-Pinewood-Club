@@ -14,7 +14,7 @@ public class InventoryController implements IInventoryController{
     @Override
     public void openInventory(int serialCode) {
         while (true) {
-            inventoryService.showItens(serialCode);
+            System.out.println(inventoryService.showItens(serialCode));
             int response = InputUtil.readInt("[0] <--");
             if (response == 0) {
                 return;

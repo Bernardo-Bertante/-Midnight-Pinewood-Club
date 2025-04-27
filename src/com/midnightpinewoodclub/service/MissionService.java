@@ -34,24 +34,24 @@ public class MissionService implements IMissionService{
     private String missionOptions() {
         List<Mission> missions = missionRepository.getMissions();
         StringBuilder sb = new StringBuilder();
+
         if (missions.isEmpty()) {
-            sb.append("║   (No items in inventory yet...)     ║\n");
+            sb.append("║   (No missions available yet...)     ║\n");
         } else {
             int cont = 1;
             for (Mission mission : missions) {
-                sb.append("╔══════════════════════════════════════╗\n");
-                sb.append(String.format("║                %s [%d]                    ║\n", mission.getTitle(), cont));
-                sb.append("╠══════════════════════════════════════╣\n");
-                sb.append(String.format("║ %-28s ║\n", mission.getDescription()));
-                sb.append(String.format("║ You will get: %-28s ║\n", mission.getReward().getName()));
-                sb.append("╠══════════════════════════════════════╣\n");
+                sb.append("╔═════════════════════════════════════════════════════════════════════╗\n");
+                sb.append(String.format("║ %-67s ║\n", formatText(mission.getTitle() + " [" + cont + "]", 67)));
+                sb.append("╠═════════════════════════════════════════════════════════════════════╣\n");
+                sb.append(String.format("║ %-67s ║\n", formatText(mission.getDescription(), 67)));
+                sb.append(String.format("║ You will get: %-53s ║\n", formatText(mission.getReward().getName(), 53)));
+                sb.append("╚═════════════════════════════════════════════════════════════════════╝\n");
                 cont++;
             }
         }
-
-        sb.append("╚══════════════════════════════════════╝\n");
         return sb.toString();
     }
+
 
     private String currentMission(int serialCode) {
         List<Mission> missions = missionRepository.getMissions();
@@ -62,18 +62,27 @@ public class MissionService implements IMissionService{
         } else {
             for (Mission mission : missions) {
                 if (member.getBipe().getCurrentMissionId() == mission.getId()) {
-                    sb.append("╔══════════════════════════════════════╗\n");
-                    sb.append(String.format("║                %s                    ║\n", mission.getTitle()));
-                    sb.append("╠══════════════════════════════════════╣\n");
-                    sb.append(String.format("║ %-28s ║\n", mission.getDescription()));
-                    sb.append(String.format("║ You will get: %-28s ║\n", mission.getReward().getName()));
-                    sb.append("╚══════════════════════════════════════╝\n");
+                    sb.append("╔═════════════════════════════════════════════════════════════════════╗\n");
+                    sb.append(String.format("║ %-67s ║\n", formatText(mission.getTitle(), 67)));
+                    sb.append("╠═════════════════════════════════════════════════════════════════════╣\n");
+                    sb.append(String.format("║ %-67s ║\n", formatText(mission.getDescription(), 67)));
+                    sb.append(String.format("║ You will get: %-53s ║\n", formatText(mission.getReward().getName(), 53)));
+                    sb.append("╚═════════════════════════════════════════════════════════════════════╝\n");
                     break;
                 }
             }
         }
         return sb.toString();
     }
+
+    private String formatText(String text, int length) {
+        if (text.length() > length) {
+            return text.substring(0, length - 3) + "...";
+        } else {
+            return String.format("%-" + length + "s", text);
+        }
+    }
+
 
     @Override
     public Mission getMissionById(int missionId) {
@@ -97,9 +106,12 @@ public class MissionService implements IMissionService{
     public String finishMission(int serialCode) {
         Mission mission = memberService.getCurrentMission(serialCode);
         Item reward = mission.getReward();
-        memberService.addItem(serialCode, reward);
+        memberService.levelUp(serialCode);
         memberService.setToNotInMission(serialCode);
-        return "\nYou received " + reward.getName();
+        if (memberService.addItem(serialCode, reward)) {
+            return "\nYou received " + reward.getName();
+        }
+        return "\nYou already got " + reward.getName();
     }
 
 }

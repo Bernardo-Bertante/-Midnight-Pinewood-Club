@@ -12,7 +12,7 @@ public class Member {
     private int age;
     private final Gender gender;
     private final Bipe bipe;
-    private List<Item> inventory;
+    private final List<Item> inventory;
 
     public Member(String name, int age, Gender gender, Bipe bipe) {
         this.name = name;

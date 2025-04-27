@@ -9,6 +9,7 @@ import com.midnightpinewoodclub.repository.IMemberRepository;
 import com.midnightpinewoodclub.util.Gender;
 import com.midnightpinewoodclub.util.Logger;
 import com.midnightpinewoodclub.dto.MemberEditRequest;
+import com.midnightpinewoodclub.util.Title;
 
 import java.util.List;
 
@@ -76,15 +77,29 @@ public class MemberService implements IMemberService{
     }
 
     @Override
-    public void addItem(int serialCode, Item item) {
+    public boolean addItem(int serialCode, Item item) {
         Member member = getMemberByBipeCode(serialCode);
-        member.addItemToInventory(item);
+        if (!member.getInventoryItems().contains(item)){
+            member.addItemToInventory(item);
+            return true;
+        }
+        return false;
     }
 
     @Override
     public List<Item> getInventory(int serialCode) {
         Member member = getMemberByBipeCode(serialCode);
         return member.getInventoryItems();
+    }
+
+    @Override
+    public void levelUp(int serialCode) {
+        Member member = getMemberByBipeCode(serialCode);
+        int currentValueTitle = Title.fromTitle(member.getBipe().getTitle());
+        if (currentValueTitle < Title.titleSize() - 1) {
+            currentValueTitle++;
+            member.getBipe().setTitle(Title.values()[currentValueTitle]);
+        }
     }
 
     @Override
